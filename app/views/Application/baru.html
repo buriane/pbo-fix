@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Data Peserta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        hr {
+            border-top: 3px solid #FEFF86;
+        }
+
+        h1 {
+            margin: 20px;
+            text-align: center;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+
+        form {
+            width: 350px;
+            margin: 10px auto;
+        }
+
+        input {
+            width: 100%;
+            margin: 2px;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #19A7CE;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 152px;
+            color: #FEFF86;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 20px;
+            background: #146C94;
+            box-shadow: 0 0 5px #146C94, 0 0 5px #146C94;
+        }
+
+        button:hover {
+            box-shadow: 0 0 5px #146C94, 0 0 10px #146C94, 0 0 15px #146C94;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Buat Data Peserta</h1>
+    <hr>
+    <form action="@{Application.simpan()}" name="pesertaku">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" name="pesertaku.nama"></td>
+            </tr>
+            <tr>
+                <td>Nomor Telepon</td>
+                <td><input type="text" name="pesertaku.no_telp"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="pesertaku.email"></td>
+            </tr>
+            <tr>
+                <td>Jenis Workshop</td>
+                <td>
+                    <select name="pesertaku.workshopString">
+                        @for(Workshop workshop : daftar)
+                        #{list items:daftar, as:'x'}    
+                            <option value="${x.namaWorkshop}">${x.namaWorkshop}</option>
+                        #{/list}
+                        @end
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="pesertaku.id"></td>
+                <td><button type="submit">Simpan</button></td>
+            </tr>
+        </table>
+    </form>
+    </center>
+</body>
+</html>

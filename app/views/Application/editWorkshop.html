@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data Workshop</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        h1 {
+            margin: 20px;
+            text-align: center;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }
+
+        hr {
+            border-top: 3px solid #FEFF86;
+        }
+
+        form {
+            width: 350px;
+            margin: 10px auto;
+        }
+
+        input {
+            width: 100%;
+            margin: 2px;
+            border: none;
+            outline: none;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #19A7CE;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 152px;
+            color: #FEFF86;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 20px;
+            background: #146C94;
+            box-shadow: 0 0 5px #146C94, 0 0 5px #146C94;
+        }
+
+        button:hover {
+            box-shadow: 0 0 5px #146C94, 0 0 10px #146C94, 0 0 15px #146C94;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Edit Data Workshop</h1>
+    <hr>
+    <form action="@{Application.simpanWorkshop()}" name="workshopku">
+        <table>
+            <tr>
+                <td>Nama Workshop</td>
+                <td><input type="text" name="workshopku.namaWorkshop" value="${z.namaWorkshop}"></td>
+            </tr>
+            <tr>
+                <td>Pembicara</td>
+                <td><input type="text" name="workshopku.pembicara" value="${z.pembicara}"></td>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td><input type="date" name="workshopku.tanggal" value="${z.tanggal}"></td>
+            </tr>
+            <tr>
+                <td>Tempat</td>
+                <td><input type="text" name="workshopku.tempat" value="${z.tempat}"></td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="workshopku.id" value="${z.id}"></td>
+                <td><button type="submit">Simpan</button></td>
+            </tr>
+        </table>
+    </form>
+    </center>
+</body>
+</html>
