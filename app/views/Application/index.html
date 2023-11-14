@@ -85,9 +85,27 @@
         top: 10px;
         right: 10px;
     }
+
+    p {
+        font-size: 35px;
+        font-weight: bolder;
+    }
+
+    .welcome {
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+    }
     </style>
 </head>
 <body>
+<div class="welcome">
+    <p>Selamat Datang, ${x.username ? x.username : "Hii!"}</p>
+</div>
 <div class="container">
     <div class="kiri">
         <form action="@{Application.tampilkan()}">

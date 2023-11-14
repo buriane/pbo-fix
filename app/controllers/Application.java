@@ -8,11 +8,13 @@ import java.util.*;
 
 import models.*;
 
-@With(Secure.class)
+// @With(Secure.class)
 public class Application extends Controller {
 
     public static void index() {
-        render();
+        String siapa = Security.connected();
+        User x = User.find("username=?1", siapa).first();
+        render(siapa, x);
     }
 
     public static void tampilkan() {
@@ -66,4 +68,17 @@ public class Application extends Controller {
         z.delete();
         tampilkan();
     }
+
+    public static void register() {
+        render();
+    }
+
+    public static void simpanUser(User userku) { 
+        userku.save(); 
+        redirectLogin(); 
+    }
+
+    public static void redirectLogin() {
+        render();
+    } 
 }
