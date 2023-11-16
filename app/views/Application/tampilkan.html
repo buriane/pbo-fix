@@ -1,3 +1,5 @@
+#{set isNotAdmin: session.get('user.role.namaRole') != 'admin' /}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,7 +109,7 @@
                 <th>Nomor Telepon</th>
                 <th>Email</th>
                 <th>Jenis Workshop</th>
-                <th>Aksi</th>
+                <th #{if isNotAdmin}style="display: none;"#{/if}>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -117,7 +119,7 @@
                 <td>${x.no_telp}</td>
                 <td>${x.email}</td>
                 <td>${x.workshopString}</td>
-                <td><a href="@{Application.editPeserta(x.id)}">Ubah</a> | <a href="@{Application.hapusPeserta(x.id)}">Hapus</a></td>
+                <td #{if isNotAdmin}style="display: none;"#{/if}><a href="@{Application.editPeserta(x.id)}">Ubah</a> | <a href="@{Application.hapusPeserta(x.id)}">Hapus</a></td>
             </tr>
         #{/list}
         </tbody>

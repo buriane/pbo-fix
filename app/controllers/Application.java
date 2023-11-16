@@ -10,6 +10,18 @@ import models.*;
 
 // @With(Secure.class)
 public class Application extends Controller {
+    @Before
+    public static void checkAuthentication() {
+        String action = request.actionMethod;
+        if (!action.equals("register") && !session.contains("username")) {
+            try {
+                Secure.login();
+            } catch (Throwable e) {
+                flash.error("An error occurred during login redirection.");
+                Application.index();
+            }
+        }
+    }
 
     public static void index() {
         String siapa = Security.connected();
