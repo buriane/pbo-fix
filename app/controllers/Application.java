@@ -31,7 +31,9 @@ public class Application extends Controller {
 
     public static void tampilkan() {
         List daftar = Peserta.findAll();
-        render(daftar);
+        String siapa = Security.connected();
+        User x = User.find("username", siapa).first();
+        render(daftar, x);
     }
 
     public static void tampilkanWorkshop() {
@@ -87,7 +89,8 @@ public class Application extends Controller {
 
     public static void simpanUser(User userku) { 
         userku.save(); 
-        redirectLogin(); 
+        flash.success("Registration successful!");
+        redirectLogin();
     }
 
     public static void redirectLogin() {
