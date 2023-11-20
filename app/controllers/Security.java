@@ -8,6 +8,7 @@ public class Security extends controllers.Secure.Security {
         User x = User.find("username=?1 and password=?2", username, password).first();
         if (x!=null) {
             boleh = true;
+            session.put("username", username);
         }
         return boleh;
     }

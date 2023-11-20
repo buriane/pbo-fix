@@ -1,14 +1,11 @@
-#{set isNotAdmin: x.role.namaRole != 'admin' /}
-#{set isNotGuest: x.role.namaRole != 'guest' /}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Workshop</title>
+    <title>Daftar Peserta</title>
     <style>
-         * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -101,35 +98,31 @@
     <a href="@{Secure.logout()}">
         <img src="/public/images/logout.png" alt="Logout">
     </a>
-    <h1>Daftar Workshop</h1>
+    <h1>History Workshop</h1>
     <hr>
     <table class="content-table">
         <thead>
             <tr>
-                <th>Nama Workshop</th>
-                <th>Pembicara</th>
-                <th>Tanggal</th>
-                <th>Tempat</th>
-                <th>Aksi</th>
+                <th>Nama</th>
+                <th>Username</th>
+                <th>Nomor Telepon</th>
+                <th>Email</th>
+                <th>Jenis Workshop</th>
             </tr>
         </thead>
         <tbody>
         #{list items:daftar, as:'x'}
-        <tr>
-            <td>${x.namaWorkshop}</td>
-            <td>${x.pembicara}</td>
-            <td>${x.tanggal}</td>
-            <td>${x.tempat}</td>
-            <td #{if isNotAdmin}style="display: none;"#{/if}><a href="@{Application.editWorkshop(x.id)}">Ubah</a> | <a href="@{Application.hapusWorkshop(x.id)}">Hapus</a></td>
-            <td #{if isNotGuest}style="display: none;"#{/if}><a href="@{Application.baruJoin(x.id)}">Join</a></td>
-        </tr>
+            <tr>
+                <td>${x.nama}</td>
+                <td>${x.username}</td>
+                <td>${x.no_telp}</td>
+                <td>${x.email}</td>
+                <td>${x.workshopString}</td>
+            </tr>
         #{/list}
         </tbody>
     </table>
     <br>
-    <form action="@{Application.baruWorkshop()}">
-        <button type="submit" #{if isNotAdmin}style="display: none;"#{/if}>Buat Data Baru</button>
-    </form><br>
     <a href="@{Application.index()}">Kembali</a>
     </center>
 </body>

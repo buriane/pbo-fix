@@ -1,4 +1,5 @@
 #{set isNotAdmin: x.role.namaRole != 'admin' /}
+#{set isNotGuest: x.role.namaRole != 'guest' /}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,14 +105,21 @@
     <p>Selamat Datang, ${x.username}</p>
 </div>
 <div class="container">
-    <div class="kiri">
+    <div class="kiri" #{if isNotAdmin}style="display: none;"#{/if}>
         <form action="@{Application.tampilkan()}">
             <h2>Daftar Peserta</h2>
             <hr>
             <button type="submit">Lihat</button>
         </form>
     </div>
-    <div class="kanan" #{if isNotAdmin}style="display: none;"#{/if}>
+    <div class="kiri" #{if isNotGuest}style="display: none;"#{/if}>
+        <form action="@{Application.tampilkanHistory()}">
+            <h2>History Workshop</h2>
+            <hr>
+            <button type="submit">Lihat</button>
+        </form>
+    </div>
+    <div class="kanan">
         <form action="@{Application.tampilkanWorkshop()}">
             <h2>Daftar Workshop</h2>
             <hr>

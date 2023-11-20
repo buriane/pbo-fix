@@ -99,8 +99,14 @@
     <h1>Register</h1>
     <hr>
     <form action="@{Application.simpanUser}" method="post">
+        <label for="nama">Nama</label> 
+        <input type="text" name="userku.nama" id="nama" required>
         <label for="username">Username</label> 
         <input type="text" name="userku.username" id="username" required>
+        <label for="no_telp">No Telpon</label> 
+        <input type="number" name="userku.no_telp" id="no_telp" required>
+        <label for="email">Email</label> 
+        <input type="email" name="userku.email" id="email" required>
         <label for="password">Password</label>
         <input type="password" name="userku.password" id="password" required>
         <label for="confirm">Konfirmasi Password</label>

@@ -38,12 +38,27 @@ public class Application extends Controller {
 
     public static void tampilkanWorkshop() {
         List daftar = Workshop.findAll();
+        String siapa = Security.connected();
+        User x = User.find("username", siapa).first();
+        render(daftar, x);
+    }
+
+    public static void tampilkanHistory() {
+        String username = session.get("username");
+        List daftar = Peserta.find("username", username).fetch();
         render(daftar);
     }
 
     public static void baru() {
         List daftar = Workshop.findAll();
         render(daftar);
+    }
+
+    public static void baruJoin(Long id) {
+        String siapa = Security.connected();
+        User x = User.find("username", siapa).first();
+        Workshop z = Workshop.find("id", id).first();
+        render(x, z);
     }
 
     public static void baruWorkshop() {
@@ -53,6 +68,11 @@ public class Application extends Controller {
     public static void simpan(Peserta pesertaku) {
         pesertaku.save();
         tampilkan();
+    }
+
+    public static void simpanBaru(Peserta pesertaku) {
+        pesertaku.save();
+        tampilkanHistory();
     }
 
     public static void simpanWorkshop(Workshop workshopku) {

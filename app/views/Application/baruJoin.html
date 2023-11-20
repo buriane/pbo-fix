@@ -69,31 +69,28 @@
     <center>
     <h1>Buat Data Peserta</h1>
     <hr>
-    <form action="@{Application.simpan()}" name="pesertaku">
+    <form action="@{Application.simpanBaru()}" name="pesertaku">
         <table>
             <tr>
                 <td>Nama</td>
-                <td><input type="text" name="pesertaku.nama"></td>
+                <td><input type="text" name="pesertaku.nama" value="${x.nama}"></td>
             </tr>
             <tr>
+                <td>Username</td>
+                <td><input type="text" name="pesertaku.username" value="${x.username}"></td>
+            </tr>
             <tr>
                 <td>Nomor Telepon</td>
-                <td><input type="text" name="pesertaku.no_telp"></td>
+                <td><input type="text" name="pesertaku.no_telp" value="${x.no_telp}"></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td><input type="email" name="pesertaku.email"></td>
+                <td><input type="email" name="pesertaku.email" value="${x.email}"></td>
             </tr>
             <tr>
                 <td>Jenis Workshop</td>
                 <td>
-                    <select name="pesertaku.workshopString">
-                        @for(Workshop workshop : daftar)
-                        #{list items:daftar, as:'x'}    
-                            <option value="${x.namaWorkshop}">${x.namaWorkshop}</option>
-                        #{/list}
-                        @end
-                    </select>
+                    <input type="text" name="pesertaku.workshopString" value="${z.namaWorkshop}">
                 </td>
             </tr>
             <tr>

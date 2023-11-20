@@ -10,6 +10,7 @@ import play.db.jpa.Model;
 @Entity
 public class Peserta extends Model {
     public String nama;
+    public String username;
     public String no_telp;
     public String email;
     public String workshopString;
