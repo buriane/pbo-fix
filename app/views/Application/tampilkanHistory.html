@@ -32,6 +32,7 @@
         }
 
         .content-table {
+            text-align: center;
             border-collapse: collapse;
             margin: 25px 0;
             font-size: 0.9rem;
@@ -44,7 +45,7 @@
         .content-table thead tr {
             background-color: #19A7CE;
             color: #fff;
-            text-align: left;
+            text-align: center;
             font-weight: bold;
         }
 
@@ -95,28 +96,17 @@
 </head>
 <body>
     <center>
-    <a href="@{Secure.logout()}">
-        <img src="/public/images/logout.png" alt="Logout">
-    </a>
     <h1>History Workshop</h1>
     <hr>
     <table class="content-table">
         <thead>
             <tr>
-                <th>Nama</th>
-                <th>Username</th>
-                <th>Nomor Telepon</th>
-                <th>Email</th>
                 <th>Jenis Workshop</th>
             </tr>
         </thead>
         <tbody>
         #{list items:daftar, as:'x'}
             <tr>
-                <td>${x.nama}</td>
-                <td>${x.username}</td>
-                <td>${x.no_telp}</td>
-                <td>${x.email}</td>
                 <td>${x.workshopString}</td>
             </tr>
         #{/list}
